@@ -2,6 +2,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import "./globals.css";
 import { ThemeProvider } from "./Providers/theme-provider";
 import { AppSidebar } from "@/components/app.sidebar";
+import Menubar from "@/components/app.menubar";
 
 export const metadata = {
   title: "5ire.org",
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+
         <link
           rel="stylesheet"
           data-purpose="Layout StyleSheet"
@@ -90,12 +92,13 @@ export default function RootLayout({ children }) {
 
           <SidebarProvider>
             <AppSidebar />
-            <main>
-              <SidebarTrigger />
+            <main className="w-full">
+              <Menubar />
               {children}
             </main>
           </SidebarProvider>
         </ThemeProvider>
+
       </body>
     </html>
   );
