@@ -2,14 +2,18 @@
 import React, { useState } from "react";
 import './login.scss'
 import Image from "next/image";
-import Input from "../components/formInput";
-import Button from "../components/formButton";
+import Input from "../my-components/formInput";
+import Button from "../my-components/formButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const router = useRouter();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,9 +56,10 @@ const Login = () => {
             <div className="flex-1 transition-all bg-[#E9EFF6] flex items-center justify-center py-5 px-4 flex-col">
                 <div className="w-full max-w-md mb-4">
 
-                    <Link href={'/login'} className="text-[#5C5D6D] font-bold md:text-base">
+                    <span onClick={() => { router.replace('/login') }} className="text-[#5C5D6D] md:text-base font-bold cursor-pointer">
                         <i className="fa fa-arrow-left" aria-hidden="true"></i> Back to Login
-                    </Link>
+                    </span> 
+
                 </div>
                 <div className="w-full max-w-md bg-white rounded-lg shadow-md px-10 py-6">
 
@@ -114,7 +119,7 @@ const Login = () => {
                         </div>
 
                         <p className="mt-6 text-center text-gray-600 font-medium">
-                            Already have an Account? <Link href="/login" className="text-blue-500 font-bold">Login Here!</Link>
+                            Already have an Account? <span onClick={() => { router.replace('/login') }} className="text-blue-500 font-bold cursor-pointer">Log in!</span>
                         </p>
                     </div>
                 </div>

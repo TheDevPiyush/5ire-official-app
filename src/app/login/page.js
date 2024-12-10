@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import './login.scss'
 import Image from "next/image";
-import Input from "../components/formInput";
-import Button from "../components/formButton";
-import Link from "next/link";
+import Input from "../my-components/formInput";
+import Button from "../my-components/formButton";
+import { useRouter } from "next/navigation";
 const Login = () => {
 
     const [email, setEmail] = useState('');
@@ -12,6 +12,8 @@ const Login = () => {
     const [walletID, setWalletID] = useState('');
 
     const [selectedTab, setSelectedTab] = useState('email');
+
+    const router = useRouter();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +60,7 @@ const Login = () => {
                 <div className="w-full max-w-md bg-white rounded-lg shadow-md p-10">
 
                     <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                        <button onClick={() => { setSelectedTab("email") }} className={`flex-1 py-2 px-4 transition-all duration-300 hover:opacity-75 
+                        <button onClick={() => { setSelectedTab("email") }} className={`flex-1 py-2 px-4 transition-all duration-200 hover:opacity-75 
                             ${selectedTab === "email" ? "bg-[#2653CF] text-white font-bold" : 'bg-[#F0F6FE] text-gray-800 '}  rounded-lg `}>
                             Email Login
                         </button>
@@ -117,7 +119,7 @@ const Login = () => {
                         </div>
 
                         <p className="mt-6 text-center text-gray-600 font-medium">
-                            Don’t have an account? <Link href="/register" className="text-blue-500 font-bold">Create New</Link>
+                            Don’t have an account? <span onClick={() => { router.replace('/register') }} className="text-blue-500 font-bold cursor-pointer">Create New</span>
                         </p>
                     </div>
                         :

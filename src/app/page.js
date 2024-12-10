@@ -4,11 +4,12 @@ import React, { useEffect, useState } from 'react'
 
 export default function page() {
 
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
   useEffect(() => {
-    isLogin ?
-      router.replace('/home')
+    isLogin 
+      ?
+      router.replace('/dashboard')
       :
       router.replace('/login')
   }, [])
